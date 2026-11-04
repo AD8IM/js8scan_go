@@ -1,0 +1,45 @@
+; js8scan configuration
+
+[radio]
+name     = IC-7300
+host     = 127.0.0.1
+; JS8Call: File > Settings > Reporting > API > enable TCP Server (default 2442)
+port     = 2442
+
+[scan]
+; Seconds. Stay at least min_dwell; extend while activity is heard,
+; but never longer than max_dwell.
+min_dwell  = 120
+max_dwell  = 600
+; Extend the stay if something was heard within this many seconds.
+quiet_time = 60
+; Audio offset (Hz) to set on each frequency
+offset     = 1500
+
+[frequencies]
+; label = dial frequency (Hz, or MHz if it contains a decimal point)
+80m = 3.578
+40m = 7.078
+30m = 10.130
+20m = 14.078
+17m = 18.104
+
+[logs]
+; Directory where JS8Call writes ALL.TXT and DIRECTED.TXT
+dir       = ~/.local/share/JS8Call
+all       = ALL.TXT
+directed  = DIRECTED.TXT
+
+[tx]
+; Master switch. Leave false to run receive-only.
+enabled          = false
+; Labels (from [frequencies]) where transmitting is allowed
+send_on          = 40m, 20m
+; Names (from [messages]) to send on each visit to a send_on frequency
+send             = heartbeat
+; Minimum seconds between sends of the same message on the same frequency
+min_interval     = 900
+
+[messages]
+heartbeat = @HB HEARTBEAT
+snr_check = @ALLCALL SNR?
