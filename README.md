@@ -3,11 +3,17 @@ A helper APP written in Go to enable js8Call to act as a radio scanner
 
 Frequency-scanning companion for JS8Call, talking to its TCP API.
 
+# How to install/setup
 1. In JS8Call: File > Settings > Reporting > API: enable the TCP server (default port 2442).
-2. `cp config.ini.example config.ini` and edit.
-3. `go build -o js8scan . && ./js8scan -config config.ini`
+2. cp config.ini.example config.ini and edit.
+3. Or run ./js8scan -setup to answer prompts and generate config.ini.
+4. go build -o js8scan . && ./js8scan -config config.ini
 
 Receive-only by default; set `[tx] enabled = true` to transmit.
+
+# Running post setup
+1. go build -o js8scan .
+2. ./js8scan -setup
 
 ## Assumptions
     this is running on same machine as the js8call instance in order to examine the logs directly
